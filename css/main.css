@@ -1128,6 +1128,7 @@ main {
   }
   .power .arcade .figures {
     height: 480px;
+    order: 0;
   }
   .power .arcade figure {
     transform: translate(-182px, -6px);
@@ -1178,6 +1179,7 @@ main {
   .power .arcade .figures {
     height: auto;
     margin-top: 20px;
+    order: 1;
   }
   .power .arcade figure {
     transform: translate(20px, 0);
@@ -1211,7 +1213,7 @@ main {
 
 /* display - notes */
 .display .notes h1 {
-  width: 630px;
+  width: 4;
   height: 370px;
   background-image: url("../images/display_headline.png");
   transform: translate(104px, 0);
@@ -1224,7 +1226,7 @@ main {
   width: 145px;
   height: 45px;
   background-image: url("../images/display_notes_caption.png");
-  transform: translate(707px, -16px);
+  transform: ttranslate(707px, -16px);
 }
 
 /* display - shareplay */
