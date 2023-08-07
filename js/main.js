@@ -41,7 +41,10 @@ const searchInputEl = searchWrapEl.querySelector("input");
 const searchDelayEls = [...searchWrapEl.querySelectorAll("li")];
 
 searchStarterEl.addEventListener("click", showSearch);
-searchCloseEl.addEventListener("click", hideSearch);
+searchCloseEl.addEventListener("click", function(event){
+  event.stopPropagation();
+  hideSearch();
+});
 searchShadowEl.addEventListener("click", hideSearch);
 
 function showSearch() {
@@ -83,6 +86,7 @@ const menuStarterEl = document.querySelector("header .menu-starter")
 menuStarterEl.addEventListener("click", function () {
   if (headerEl.classList.contains('menuing')) {
     headerEl.classList.remove('menuing');
+    searchInputEl.value = "";
     playScroll();
   } else {
     headerEl.classList.add('menuing');
@@ -90,6 +94,58 @@ menuStarterEl.addEventListener("click", function () {
   }
   
 });
+
+// header search
+const searchTextFieldEl = document.querySelector("header .textfield");
+const searchCancelEl = document.querySelector("header .search-canceler");
+
+searchTextFieldEl.addEventListener("click", function () {
+  headerEl.classList.add("searching--mobile");
+  searchInputEl.focus()
+});
+searchCancelEl.addEventListener("click", function () {
+  headerEl.classList.remove("searching--mobile");
+});
+
+
+// 
+window.addEventListener('resize', function () {
+  if (window.innerWidth <= 740) {
+    headerEl.classList.remove('searching')
+  } else {
+    headerEl.classList.remove('searching--mobile')
+  }
+})
+
+//
+const navEl = document.querySelector('nav')
+const navMenuToggleEl = navEl.querySelector('.menu-toggler')
+const navMenuShadowEl = navEl.querySelector('.shadow')
+
+navMenuToggleEl.addEventListener('click', function () {
+  if (navEl.classList.contains('menuing')) {
+    hideNavMenu()
+  } else {
+    showNavMenu()
+  }
+
+})
+navEl.addEventListener('click', function (event) {
+  event.stopPropagation()
+})
+navMenuShadowEl.addEventListener('click', hideNavMenu)
+window.addEventListener('click', hideNavMenu)
+function showNavMenu() {
+  navEl.classList.add('menuing')
+}
+function hideNavMenu() {
+  navEl.classList.remove('menuing')
+}
+
+
+
+
+
 
 // Observer
 const io = new IntersectionObserver(function (entries) {
