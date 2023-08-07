@@ -1,6 +1,6 @@
 # Apple-Store-Website-iPad-10.2
 
-- Skills: HTML/CSS/Javascript
+- Skills: HTML/CSS/JS
 
 ## Link
 
